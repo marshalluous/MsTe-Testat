@@ -1,16 +1,17 @@
 ﻿using AutoReservation.Dal.Entities;
 using AutoReservation.Dal.Migrations;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace AutoReservation.Dal
 {
-    public class AutoReservationContext : DbContext
+    public class KundenReservationContext : DbContext
     {
-        public DbSet<Auto> Autos;
-        public DbSet<Kunde> Kunden;
-        public DbSet<Reservation> Reservationen;
+        public DbSet<Auto> Autos { get; set; }
+        public DbSet<Kunde> Kunden { get; set; }
+        public DbSet<Reservation> Reservationen { get; set; }
 
-        public AutoReservationContext()
+        public KundenReservationContext()
         {
             // Ensures that the database will be initialized
             Database.Initialize(false);
@@ -34,7 +35,7 @@ namespace AutoReservation.Dal
             // Use this for real "code first" 
             //      - Database will be created by Entity Framework
             //      - Database will be modified by Entity Framework
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<AutoReservationContext, Configuration>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<KundenReservationContext, Configuration>());
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -45,6 +46,13 @@ namespace AutoReservation.Dal
             //      Remarks:
             //      This could not be done using attributes on business entities
             //      since the discriminator (AutoKlasse) must not be part of the entity.
+            
+            modelBuilder.Entity<Auto>()
+                .Map<LuxusklasseAuto>(c => c.Requires("AutoKlasse").HasValue(0))
+                .Map<MittelklasseAuto>(c => c.Requires("AutoKlasse").HasValue(1))
+                .Map<StandardAuto>(c => c.Requires("AutoKlasse").HasValue(2));
+
+
         }
     }
 }

@@ -95,6 +95,12 @@
   <ItemGroup>
     <Folder Include="DataTransferObjects\Faults\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AutoReservation.Dal\AutoReservation.Dal.csproj">
+      <Project>{AB98AC63-032F-4050-9755-1E2235E9F1DD}</Project>
+      <Name>AutoReservation.Dal</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

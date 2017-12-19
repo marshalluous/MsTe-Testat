@@ -1,5 +1,8 @@
-﻿using AutoReservation.Common.Interfaces;
+﻿using AutoReservation.Common.DataTransferObjects;
+using AutoReservation.Common.Interfaces;
+using AutoReservation.Dal.Entities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 
 namespace AutoReservation.Service.Wcf.Testing
 {
@@ -8,5 +11,6 @@ namespace AutoReservation.Service.Wcf.Testing
     {
         private IAutoReservationService target;
         protected override IAutoReservationService Target => target ?? (target = new AutoReservationService());
+        
     }
 }

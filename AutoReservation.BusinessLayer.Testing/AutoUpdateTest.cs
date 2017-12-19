@@ -21,7 +21,13 @@ namespace AutoReservation.BusinessLayer.Testing
         [TestMethod]
         public void UpdateAutoTest()
         {
-            Assert.Inconclusive("Test not implemented.");
+            Auto auto = Target.FindAutoById(1);
+            string markeBefore = auto.Marke;
+            auto.Marke = "Mitsubishi Lancer";
+            Target.Update(auto);
+            auto = target.FindAutoById(1);
+
+            Assert.AreNotSame(markeBefore, auto.Marke);
         }
     }
 }

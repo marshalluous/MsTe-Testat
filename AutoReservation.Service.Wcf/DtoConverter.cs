@@ -127,8 +127,8 @@ namespace AutoReservation.Service.Wcf
                 Von = entity.Von,
                 Bis = entity.Bis,
                 RowVersion = entity.RowVersion,
-                Auto = ConvertToDto(entity.Auto),
-                Kunde = ConvertToDto(entity.Kunde)
+                Auto = entity.Auto.ConvertToDto(),
+                Kunde = entity.Kunde.ConvertToDto()
             };
         }
         public static List<Reservation> ConvertToEntities(this IEnumerable<ReservationDto> dtos)

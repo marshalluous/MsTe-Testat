@@ -21,7 +21,12 @@ namespace AutoReservation.BusinessLayer.Testing
         [TestMethod]
         public void UpdateReservationTest()
         {
-            Assert.Inconclusive("Test not implemented.");
+            Reservation res = target.FindReservationByNr(1);
+            DateTime oldBisDate = res.Bis;
+            res.Bis = new DateTime(2020, 07, 07);
+            target.Update(res);
+            res = target.FindReservationByNr(1);
+            Assert.AreNotEqual(oldBisDate, res.Bis);
         }
     }
 }

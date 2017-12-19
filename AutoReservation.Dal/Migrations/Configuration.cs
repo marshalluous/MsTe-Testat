@@ -2,13 +2,13 @@ using System.Data.Entity.Migrations;
 
 namespace AutoReservation.Dal.Migrations
 {
-    internal sealed class Configuration : DbMigrationsConfiguration<AutoReservationContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<KundenReservationContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
             AutomaticMigrationDataLossAllowed = true;
-            ContextKey = typeof(AutoReservationContext).FullName;
+            ContextKey = typeof(KundenReservationContext).FullName;
         }
     }
 }

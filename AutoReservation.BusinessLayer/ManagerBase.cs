@@ -5,7 +5,7 @@ namespace AutoReservation.BusinessLayer
 {
     public abstract class ManagerBase
     {
-        protected static OptimisticConcurrencyException<T> CreateOptimisticConcurrencyException<T>(AutoReservationContext context, T entity)
+        protected static OptimisticConcurrencyException<T> CreateOptimisticConcurrencyException<T>(KundenReservationContext context, T entity)
             where T : class
         {
             var dbEntity = (T)context.Entry(entity)
